@@ -1,14 +1,65 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Byteball
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="showSettingsPopover($event)">
+        <ion-icon name="ios-settings-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <form [formGroup]="cashbackData" (ngSubmit)="submitCashback()">
+    <div margin-bottom>
+      <h1>Byteball Cashback</h1>
+    </div>
+
+    <div margin-top padding-bottom>
+
+      <ion-item>
+        <ion-label color="primary" stacked>Purchase amount</ion-label>
+        <ion-input type="number" placeholder="€"
+                   formControlName="currency_amount"></ion-input>
+      </ion-item>
+      <ion-item >
+        <ion-label color="primary" stacked>Receiver</ion-label>
+        <ion-input type="text" formControlName="address" disabled></ion-input>
+      </ion-item>
+
+    </div>
+
+    <div margin-top padding-top>
+      <ion-row>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button full (click)="scanQRcode()">
+              QR Code
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button full (click)="openEmailInput()">
+              Email
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+    <ion-footer>
+      <ion-buttons>
+        <button ion-button full  type="submit"
+                [disabled]="!cashbackData.controls['address'].status === 'VALID'">
+          Submit Cashback
+        </button>
+      </ion-buttons>
+    </ion-footer>
+  </form>
+
 </ion-content>

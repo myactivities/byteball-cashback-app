@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="cashbackReceiver" (ngSubmit)="submitEmailAddress()">
+    <ion-item>
+      <ion-label color="primary" stacked>Cashback receiver email address</ion-label>
+      <ion-input type="email" formControlName="emailAddress"></ion-input>
+    </ion-item>
+    <div padding-top>
+      <ion-buttons>
+        <button ion-button full type="submit" [disabled]="!cashbackReceiver.valid">
+          Set email address
+        </button>
+      </ion-buttons>
+    </div>
+  </form>
+
+</ion-content>

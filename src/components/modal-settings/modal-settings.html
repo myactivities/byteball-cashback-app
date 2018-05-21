@@ -11,7 +11,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <form [formGroup]="settings" (ngSubmit)="submitEmailAddress()">
+  <form [formGroup]="settings" (ngSubmit)="saveSettings()">
     <ion-item>
       <ion-label color="primary" stacked>Cashback partner ID</ion-label>
       <ion-input type="email" formControlName="partner"></ion-input>

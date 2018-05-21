@@ -3,6 +3,9 @@ import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+
+import {IonicStorageModule} from '@ionic/storage';
 
 import {FormsModule} from '@angular/forms';
 
@@ -13,6 +16,7 @@ import {MyApp} from './app.component';
 import {ComponentsModule} from '../components/components.module';
 import {HomePage} from '../pages/home/home';
 import { CashbackServiceProvider } from '../providers/cashback-service/cashback-service';
+import { UserServiceProvider } from '../providers/user-service/user-service';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { CashbackServiceProvider } from '../providers/cashback-service/cashback-
     BrowserModule,
     IonicModule.forRoot(MyApp),
     ComponentsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,8 +41,10 @@ import { CashbackServiceProvider } from '../providers/cashback-service/cashback-
     SplashScreen,
     BarcodeScanner,
     QRScanner,
+    HttpClient,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CashbackServiceProvider
+    CashbackServiceProvider,
+    UserServiceProvider
   ]
 })
 export class AppModule {

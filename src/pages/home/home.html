@@ -21,11 +21,18 @@
     <div margin-top padding-bottom>
 
       <ion-item>
+        <ion-label color="primary" stacked>Order ID</ion-label>
+        <ion-input type="text" placeholder="ID" clearInput
+                   (focus)="hideButton()" (blur)="showButton()"
+                   formControlName="order_id"></ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label color="primary" stacked>Purchase amount</ion-label>
-        <ion-input type="number" placeholder="€"
+        <ion-input type="number" placeholder="€" pattern="[0-9]*"
+                   (focus)="hideButton()" (blur)="showButton()"
                    formControlName="currency_amount"></ion-input>
       </ion-item>
-      <ion-item >
+      <ion-item [hidden]="!cashbackData.controls['address'].valid">
         <ion-label color="primary" stacked>Receiver</ion-label>
         <ion-input type="text" formControlName="address" disabled></ion-input>
       </ion-item>
@@ -36,14 +43,15 @@
       <ion-row>
         <ion-col>
           <ion-buttons>
-            <button ion-button full (click)="scanQRcode()">
-              QR Code
+            <button ion-button full (click)="scanQRcode()" type="button">
+              <ion-spinner name="dots" [hidden]="!openingQRCodeScanner"></ion-spinner>
+              <span [hidden]="openingQRCodeScanner">QR Code</span>
             </button>
           </ion-buttons>
         </ion-col>
         <ion-col>
           <ion-buttons>
-            <button ion-button full (click)="openEmailInput()">
+            <button ion-button full (click)="openEmailInput()" type="button">
               Email
             </button>
           </ion-buttons>
@@ -54,8 +62,8 @@
 
     <ion-footer>
       <ion-buttons>
-        <button ion-button full  type="submit"
-                [disabled]="!cashbackData.controls['address'].status === 'VALID'">
+        <button ion-button full  type="submit" [ngClass]="{'hide': !showButtons}"
+                [disabled]="!cashbackData.valid">
           Submit Cashback
         </button>
       </ion-buttons>

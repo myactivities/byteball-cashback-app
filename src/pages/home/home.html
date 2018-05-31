@@ -4,7 +4,7 @@
       Byteball
     </ion-title>
     <ion-buttons end>
-      <button ion-button (click)="showSettingsPopover($event)">
+      <button ion-button (click)="showNavOptions($event)">
         <ion-icon name="ios-settings-outline"></ion-icon>
       </button>
     </ion-buttons>
@@ -23,13 +23,13 @@
       <ion-item>
         <ion-label color="primary" stacked>Order ID</ion-label>
         <ion-input type="text" placeholder="ID" clearInput
-                   (focus)="hideButton()" (blur)="showButton()"
+                   (ionFocus)="hideButton()" (ionBlur)="showButton()"
                    formControlName="order_id"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked>Purchase amount</ion-label>
         <ion-input type="number" placeholder="€" pattern="[0-9]*"
-                   (focus)="hideButton()" (blur)="showButton()"
+                   (ionFocus)="hideButton()" (ionBlur)="showButton()"
                    formControlName="currency_amount"></ion-input>
       </ion-item>
       <ion-item [hidden]="!cashbackData.controls['address'].valid">
@@ -39,7 +39,7 @@
 
     </div>
 
-    <div margin-top padding-top>
+    <div margin-top >
       <ion-row>
         <ion-col>
           <ion-buttons>

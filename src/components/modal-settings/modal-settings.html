@@ -32,10 +32,17 @@
       <ion-label color="primary" stacked>Default cashback percentage</ion-label>
       <ion-input type="number" formControlName="partner_cashback_percentage"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Business type</ion-label>
+      <ion-select formControlName="customer">
+        <ion-option value="restaurant">Restaurant</ion-option>
+        <ion-option value="shop">Shop</ion-option>
+      </ion-select>
+    </ion-item>
     <div padding-top>
       <ion-buttons>
         <button ion-button full type="submit" [disabled]="!settings.valid">
-          Set email address
+          Save & Close
         </button>
       </ion-buttons>
     </div>

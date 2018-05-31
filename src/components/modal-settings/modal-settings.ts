@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
-import {ViewController} from 'ionic-angular';
+import {ViewController, Events} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ToastController} from 'ionic-angular';
 
-import {UserProfile} from '../../interfaces/UserProfile';
 import {UserServiceProvider} from '../../providers/user-service/user-service';
 
 @Component({
@@ -17,10 +16,11 @@ export class ModalSettingsComponent {
   constructor(private view: ViewController,
               private formBuilder: FormBuilder,
               private toast: ToastController,
+              private events: Events,
               private userService: UserServiceProvider) {
 
     this.userService.getUser()
-      .then(data => {
+      .then((data) => {
 
         if (data) {
           this.settings.setValue(data);
@@ -32,7 +32,8 @@ export class ModalSettingsComponent {
       partner: ['', Validators.required],
       partner_key: ['', Validators.required],
       currency: ['EUR', Validators.required],
-      partner_cashback_percentage: ['', Validators.required]
+      partner_cashback_percentage: ['10', Validators.required],
+      customer: ['restaurant', Validators.required],
     });
 
   }
@@ -40,10 +41,12 @@ export class ModalSettingsComponent {
   public saveSettings(): void {
     this.userService.saveUser(this.settings.value)
       .then(() => {
+        this.view.dismiss();
+        this.events.publish('updatedDefaultSettings');
         this.toast.create({
           message: 'Settings saved',
           duration: 3000,
-          position: 'bottom'
+          position: 'top'
         }).present()
       });
   }

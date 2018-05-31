@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, ModalController, Events, LoadingController, ToastController} from 'ionic-angular';
+import {ModalController, PopoverController,
+  Events, LoadingController, ToastController} from 'ionic-angular';
 
 import {BarcodeScanner, BarcodeScanResult} from '@ionic-native/barcode-scanner';
 import {QRScanner} from '@ionic-native/qr-scanner';
 
-import {ModalSettingsComponent} from '../../components/modal-settings/modal-settings';
 import {ModalCashbackReceiverComponent} from '../../components/modal-cashback-receiver/modal-cashback-receiver';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 import {CashbackServiceProvider} from '../../providers/cashback-service/cashback-service';
-
 import {config} from '../../config/config';
+
+import {PopoverNavOptionsComponent} from '../../components/popover-nav-options/popover-nav-options';
 
 @Component({
   selector: 'page-home',
@@ -28,15 +29,16 @@ export class HomePage implements OnInit{
     this.showButtons = true;
   }
 
-  constructor(public navCtrl: NavController,
-              public scanner: BarcodeScanner,
+  constructor(public scanner: BarcodeScanner,
               public modal: ModalController,
+              public popover: PopoverController,
               public formBuilder: FormBuilder,
               public events: Events,
               public qrCode: QRScanner,
               public loading: LoadingController,
               public toast: ToastController,
               private cashbackService: CashbackServiceProvider) {
+
     this.events.subscribe('submittedEmailAddress', data => {
       this.receiverAddress = data;
       this.cashbackData.controls['address'].setValue(data);
@@ -51,9 +53,14 @@ export class HomePage implements OnInit{
     this.cashbackData = this.formBuilder.group({
       order_id: ['', Validators.required],
       currency_amount: ['', Validators.required],
-      address: ['', Validators.required],
+      address: ['', Validators.required]
     });
 
+  }
+
+  public showNavOptions(ev){
+    this.popover.create(PopoverNavOptionsComponent)
+      .present({ev:ev});
   }
 
   public hideButton(){
@@ -66,10 +73,6 @@ export class HomePage implements OnInit{
     setTimeout(()=>{
       this.showButtons = true;
     },200);
-  }
-
-  public showSettingsPopover() {
-    this.modal.create(ModalSettingsComponent).present();
   }
 
   public scanQRcode() {
@@ -107,13 +110,31 @@ export class HomePage implements OnInit{
       .then(data => {
 
         _loading.dismiss();
-        alert(JSON.stringify(data));
+
         if(data){
-          this.toast.create({
-            message: data.cashback_amount + ' Bytes transfered',
-            position: 'top',
-            showCloseButton: true
-          }).present();
+
+          switch (data.result){
+            case 'error':
+              this.toast.create({
+                message: data.error,
+                position: 'top',
+                cssClass: 'toast-error',
+                showCloseButton: true
+              }).present();
+              break;
+            case 'ok':
+              this.toast.create({
+                message: data.cashback_amount + ' Bytes transfered',
+                position: 'top',
+                cssClass: 'toast-success',
+                showCloseButton: true
+              }).present();
+
+              this.cashbackData.reset();
+
+              break;
+          }
+
         }
 
       });

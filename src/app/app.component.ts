@@ -1,21 +1,39 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import {Component} from '@angular/core';
+import {Platform, ModalController} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import {Storage} from '@ionic/storage';
+
+import {HomePage} from '../pages/home/home';
+import {ModalSettingsComponent} from '../components/modal-settings/modal-settings';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage: any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform,
+              statusBar: StatusBar,
+              splashScreen: SplashScreen,
+              modal: ModalController,
+              storage: Storage) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+
       statusBar.styleDefault();
       splashScreen.hide();
+
+      storage.get('user')
+        .then(data => {
+          if (!data) {
+            modal
+              .create(ModalSettingsComponent)
+              .present();
+          }
+        });
+
+
     });
   }
 }

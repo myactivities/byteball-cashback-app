@@ -15,7 +15,16 @@ export class UserServiceProvider {
   }
 
   public getUser(): Promise<UserProfile> {
-    return this.storage.get('user');
+    return this.storage.get('user')
+      .then(user => {
+
+        if(user){
+          return user as UserProfile;
+        }
+
+        return null;
+
+      });
   }
 
 }

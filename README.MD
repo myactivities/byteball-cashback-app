@@ -70,6 +70,7 @@ For more details about Ionic please visit [https://ionicframework.com/](https://
 
 ## Donations
 
+byteball:WR5FPYE6LHBQ57ZCFUTJXDDNHWK5355S
 
 ## Contributors
 - Antonius Gress ([AnGrYxx](https://github.com/AnGrYxx))

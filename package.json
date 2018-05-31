@@ -1,7 +1,7 @@
 {
   "name": "byteball-cashback-app",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Rui Lun Tran",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -51,7 +51,7 @@
     "@ionic/app-scripts": "3.1.9",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project",
+  "description": "App for Byteball Cashback program",
   "cordova": {
     "plugins": {
       "phonegap-plugin-barcodescanner": {},

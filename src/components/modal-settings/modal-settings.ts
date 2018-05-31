@@ -12,6 +12,7 @@ import {UserServiceProvider} from '../../providers/user-service/user-service';
 export class ModalSettingsComponent {
 
   private settings: FormGroup;
+  public passwordFieldType: string = 'password';
 
   constructor(private view: ViewController,
               private formBuilder: FormBuilder,
@@ -53,6 +54,14 @@ export class ModalSettingsComponent {
 
   public closeModal() {
     this.view.dismiss();
+  }
+
+  public makePWVisible(){
+    this.passwordFieldType = 'text';
+  }
+
+  public makePWInvisible(){
+    this.passwordFieldType = 'password';
   }
 
 }

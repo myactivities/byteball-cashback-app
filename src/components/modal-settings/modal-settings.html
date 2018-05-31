@@ -14,11 +14,11 @@
   <form [formGroup]="settings" (ngSubmit)="saveSettings()">
     <ion-item>
       <ion-label color="primary" stacked>Cashback partner ID</ion-label>
-      <ion-input type="email" formControlName="partner"></ion-input>
+      <ion-input type="text" formControlName="partner"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Cashback partner key</ion-label>
-      <ion-input type="email" formControlName="partner_key"></ion-input>
+      <ion-input type="{{passwordFieldType}}" formControlName="partner_key" (ionBlur)="makePWInvisible()" (ionFocus)="makePWVisible()"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Default currency</ion-label>

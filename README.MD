@@ -42,27 +42,27 @@ $ npm install ionic -g
 
 ## How to deploy
 
-Get Repo
+**Get Repo**
 ```bash
 $ git clone https://github.com/myactivities/byteball-cashback-app.git
 ```
 
-Install dependencies
+**Install dependencies**
 ````bash
 $ npm install
 ````
 
-Run local
+**Run local**
 ```bash
 $ ionic serve
 ```
 
-Deploy on iOS:
+**Deploy on iOS:**
 ```bash
 $ ionic cordova build ios --prod --aot --minifyjs --minifycss 
 ```
 
-Deploy on Android:
+**Deploy on Android:**
 ```bash
 $ ionic cordova build android --prod --aot --minifyjs --minifycss 
 ```

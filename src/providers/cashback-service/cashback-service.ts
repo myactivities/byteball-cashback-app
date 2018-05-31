@@ -1,4 +1,4 @@
-import {HttpClient, HttpParams, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 import {UserServiceProvider} from '../user-service/user-service';
@@ -39,12 +39,8 @@ export class CashbackServiceProvider {
 
       })
       .then(params => {
+        params = params.append('description', 'undefined');
         let url = config.byteball.paybackUrl;
-
-
-        // ToDo: Customer + Description
-        params = params.append('customer', 'ws');
-        params = params.append('description', 'ws2');
 
         return this.http.request(
           "post", url, {
@@ -54,14 +50,9 @@ export class CashbackServiceProvider {
             body: params,
             responseType: 'json'
           })
-          .toPromise()
-          .then(data => {
-            alert(JSON.stringify(data));
-            return data;
-          });
+          .toPromise();
       })
       .catch(err => {
-        alert(JSON.stringify(err));
         console.log(err);
       });
 

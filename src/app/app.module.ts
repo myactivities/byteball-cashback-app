@@ -11,12 +11,13 @@ import {FormsModule} from '@angular/forms';
 
 import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 import {QRScanner} from '@ionic-native/qr-scanner';
+import {InAppBrowser} from '@ionic-native/in-app-browser';
 
 import {MyApp} from './app.component';
 import {ComponentsModule} from '../components/components.module';
 import {HomePage} from '../pages/home/home';
-import { CashbackServiceProvider } from '../providers/cashback-service/cashback-service';
-import { UserServiceProvider } from '../providers/user-service/user-service';
+import {CashbackServiceProvider} from '../providers/cashback-service/cashback-service';
+import {UserServiceProvider} from '../providers/user-service/user-service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     SplashScreen,
     BarcodeScanner,
     QRScanner,
+    InAppBrowser,
     HttpClient,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CashbackServiceProvider,

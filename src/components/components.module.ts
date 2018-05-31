@@ -4,6 +4,7 @@ import { ModalCashbackReceiverComponent } from './modal-cashback-receiver/modal-
 import { ModalSettingsComponent } from './modal-settings/modal-settings';
 import { PopoverNavOptionsComponent } from './popover-nav-options/popover-nav-options';
 import { ModalAboutComponent } from './modal-about/modal-about';
+import { ModalCashbackSuccessComponent } from './modal-cashback-success/modal-cashback-success';
 
 
 @NgModule({
@@ -11,20 +12,23 @@ import { ModalAboutComponent } from './modal-about/modal-about';
     ModalCashbackReceiverComponent,
     ModalSettingsComponent,
     PopoverNavOptionsComponent,
-    ModalAboutComponent
+    ModalAboutComponent,
+    ModalCashbackSuccessComponent
   ],
   entryComponents: [
     ModalCashbackReceiverComponent,
     ModalSettingsComponent,
     PopoverNavOptionsComponent,
-    ModalAboutComponent
+    ModalAboutComponent,
+    ModalCashbackSuccessComponent
   ],
   imports: [IonicModule],
   exports: [
     ModalCashbackReceiverComponent,
     ModalSettingsComponent,
     PopoverNavOptionsComponent,
-    ModalAboutComponent
+    ModalAboutComponent,
+    ModalCashbackSuccessComponent
   ]
 })
 export class ComponentsModule {

@@ -1,5 +1,5 @@
 // http://ionicframework.com/docs/theming/
-
+@import "../theme/variables";
 
 // App Global Sass
 // --------------------------------------------------
@@ -17,4 +17,9 @@
 
 .hide {
   display: none !important;
+}
+
+.toolbar-background {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid map-get($colors, primary) !important;
 }

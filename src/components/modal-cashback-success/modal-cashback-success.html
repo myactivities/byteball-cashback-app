@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h1 padding-bottom>Success</h1>
+  <h4 padding-top>
+    {{viewData.cashback_amount}} Bytes paid sucessfully.
+  </h4>
+  <div padding-top class="unitTitle">
+    Unit ID:
+  </div>
+  <div>
+    <a (click)="showUnit()">{{viewData.unit}}</a>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <ion-buttons>
+        <button ion-button full (click)="closeModal()">
+          Close
+        </button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>
+</ion-footer>

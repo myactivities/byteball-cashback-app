@@ -13,6 +13,7 @@ import {config} from '../../config/config';
 
 import {PopoverNavOptionsComponent} from '../../components/popover-nav-options/popover-nav-options';
 import {ModalCashbackSuccessComponent} from '../../components/modal-cashback-success/modal-cashback-success';
+import {ModalAboutComponent} from "../../components/modal-about/modal-about";
 
 @Component({
   selector: 'page-home',
@@ -56,12 +57,6 @@ export class HomePage implements OnInit{
       currency_amount: ['', Validators.required],
       address: ['', Validators.required]
     });
-
-
-    this.modal
-      .create(ModalCashbackSuccessComponent, {"result":"ok","cashback_amount":683324,"unit":"BdDn+i8NU4ktDW1Bcjt+ElNfYjboN8EP+8toXzx0C9A="})
-      .present();
-
 
   }
 

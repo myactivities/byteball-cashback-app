@@ -20,6 +20,16 @@ which gives you an competetive advantage.
 2. You can target a growing market of crypto enthusiasts 
 and get more customers with this Cashback offer.
 
+Fill out the application form or contact us if you want to be part 
+of the Cashback program.
+
+This app has the purpose to make your life as easy as possible to 
+participate in the Byteball Cashback program.
+
+It is recommended that you make yourself familiar with the  
+Byteball platform to be able to answer questions of 
+your customers regarding Byteball.
+
 
 ## Donations
 

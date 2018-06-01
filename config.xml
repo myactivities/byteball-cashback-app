@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.myactivities.byteball.cashbackapp" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>byteball-cashback-app</name>
+    <name>Byteball CB</name>
     <description>App for Byteball Cashback program</description>
     <author email="ruilun.tran@gmail.com" href="https://myactivities.com/">Rui Lun Tran</author>
     <content src="index.html" />

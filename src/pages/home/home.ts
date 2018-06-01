@@ -13,7 +13,6 @@ import {config} from '../../config/config';
 
 import {PopoverNavOptionsComponent} from '../../components/popover-nav-options/popover-nav-options';
 import {ModalCashbackSuccessComponent} from '../../components/modal-cashback-success/modal-cashback-success';
-import {ModalAboutComponent} from "../../components/modal-about/modal-about";
 
 @Component({
   selector: 'page-home',

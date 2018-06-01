@@ -10,7 +10,6 @@ import {IonicStorageModule} from '@ionic/storage';
 import {FormsModule} from '@angular/forms';
 
 import {BarcodeScanner} from '@ionic-native/barcode-scanner';
-import {QRScanner} from '@ionic-native/qr-scanner';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 
 import {MyApp} from './app.component';
@@ -41,7 +40,6 @@ import {UserServiceProvider} from '../providers/user-service/user-service';
     StatusBar,
     SplashScreen,
     BarcodeScanner,
-    QRScanner,
     InAppBrowser,
     HttpClient,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

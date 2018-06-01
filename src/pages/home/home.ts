@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalController, PopoverController,
+import {ModalController, PopoverController, Platform, NavController,
   Events, LoadingController, ToastController} from 'ionic-angular';
 
-import {BarcodeScanner, BarcodeScanResult} from '@ionic-native/barcode-scanner';
-import {QRScanner} from '@ionic-native/qr-scanner';
+import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 
 import {ModalCashbackReceiverComponent} from '../../components/modal-cashback-receiver/modal-cashback-receiver';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -30,14 +29,15 @@ export class HomePage implements OnInit{
     this.showButtons = true;
   }
 
-  constructor(public scanner: BarcodeScanner,
+  constructor(public nav: NavController,
+              public scanner: BarcodeScanner,
               public modal: ModalController,
               public popover: PopoverController,
               public formBuilder: FormBuilder,
               public events: Events,
-              public qrCode: QRScanner,
               public loading: LoadingController,
               public toast: ToastController,
+              public platform: Platform,
               private cashbackService: CashbackServiceProvider) {
 
     this.events.subscribe('submittedEmailAddress', data => {
@@ -77,18 +77,16 @@ export class HomePage implements OnInit{
   }
 
   public scanQRcode() {
-
+    this.platform.registerBackButtonAction(()=>{
+      this.nav.pop();
+    },999);
     this.openingQRCodeScanner = true;
 
     // Use QRScanner to get permissions, somehow BarcodeScanner doesn't ask for permissions and thus it never show up.
-    this.qrCode.prepare()
-      .then((): Promise<BarcodeScanResult> => {
-        return this.scanner.scan({
-          showTorchButton: true,
-          prompt: ''
-        });
-      })
-      .then((data) => {
+    this.scanner.scan({
+      showTorchButton: true,
+      prompt: ''
+    }).then((data) => {
         this.openingQRCodeScanner = false;
         if (data.format === 'QR_CODE') {
           let byteballAddress = data.text.replace('byteball:','');

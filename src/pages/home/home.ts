@@ -85,7 +85,8 @@ export class HomePage implements OnInit{
     this.qrCode.prepare()
       .then((): Promise<BarcodeScanResult> => {
         return this.scanner.scan({
-          showTorchButton: true
+          showTorchButton: true,
+          prompt: ''
         });
       })
       .then((data) => {

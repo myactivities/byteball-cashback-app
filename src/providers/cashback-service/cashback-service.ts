@@ -7,6 +7,8 @@ import {config} from '../../config/config';
 
 import * as _ from 'underscore';
 
+import * as shortId from 'shortid';
+
 
 @Injectable()
 export class CashbackServiceProvider {
@@ -39,7 +41,7 @@ export class CashbackServiceProvider {
 
       })
       .then(params => {
-        params = params.append('description', 'undefined');
+        params = params.append('customer', shortId.generate());
         let url = config.byteball.paybackUrl;
 
         return this.http.request(

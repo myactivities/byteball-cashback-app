@@ -34,7 +34,7 @@ export class ModalSettingsComponent {
       partner_key: ['', Validators.required],
       currency: ['EUR', Validators.required],
       partner_cashback_percentage: ['10', Validators.required],
-      customer: ['restaurant', Validators.required],
+      description: ['restaurant', Validators.required],
     });
 
   }

@@ -91,7 +91,7 @@ export class HomePage implements OnInit{
       .then((data) => {
         this.openingQRCodeScanner = false;
         if (data.format === 'QR_CODE') {
-          let byteballAddress = data.text.replace('byteball:','');
+          let byteballAddress = data.text.replace('byteball:', '').replace('obyte:', '');
           this.events.publish('submittedByteballAddress', {address: byteballAddress});
         }
       });
